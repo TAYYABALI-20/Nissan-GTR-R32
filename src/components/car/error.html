@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!------- swipper cdn link ------------>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,600;1,400;1,600&display=swap');
+
+    :root {
+        --orange: #ff6347;
+        --dark-color: #ff4500;
+        --black: #444;
+        --light-color: #666;
+        --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+        --border-hover: 0.1rem solid var(--black);
+        --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all .2s linear;
+        transition: width none;
+    }
+
+    html {
+        font-size: 62.5%;
+        overflow-X: scroll;
+        scroll-padding-top: 5rem;
+        scroll-behavior: smooth;
+    }
+
+    /* html::-webkit-scrollbar{
+    width: 1rem;
+} */
+
+    /* html::-webkit-scrollbar-track{
+    background: transparent;
+} */
+
+    /* html::-webkit-scrollbar-thumb{
+    background: var(--black);
+} */
+
+
+
+
+
+
+
+
+    .btn {
+        margin-top: 1rem;
+        display: inline-block;
+        padding: 0.9rem 3rem;
+        border-radius: 0.5rem;
+        color: #fff;
+        background: var(--orange);
+        font-size: 1.7rem;
+        cursor: pointer;
+        font-weight: 500;
+
+    }
+
+    .btn:hover {
+        background-color: var(--dark-color);
+    }
+
+
+
+
+
+    .icons-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 1.5rem;
+    }
+
+    .icons-container .icons {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .icons-container .icons i {
+        font-size: 3.5rem;
+        color: var(--orange);
+        padding: 2rem 0;
+    }
+
+    .icons-container .icons h3 {
+        color: var(--black);
+        font-size: 2.2rem;
+        border-bottom: 0.5rem;
+    }
+
+    .icons-container .icons p {
+        color: var(--light-color);
+        font-size: 1.4rem;
+    }
+
+
+
+    .heading {
+        text-align: center;
+        /* margin-bottom: 2rem; */
+        position: relative;
+        /* margin-top: 90px; */
+
+    }
+
+    .heading::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 0.01rem;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: -1;
+    }
+
+    .heading span {
+        font-size: 3rem;
+        padding: 5rem 2rem;
+        color: var(--black);
+        border: var(--border);
+        background: #fff;
+    }
+
+    .featured .featured-slider .box {
+        width: 25rem;
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+        border: var(--border);
+        text-align: center;
+        margin: 20px;
+    }
+
+    .featured .featured-slider .box:hover {
+        border: var(--border-hover);
+    }
+
+    .featured .featured-slider .box .image {
+
+        /* padding: 1rem; */
+        background: linear-gradient(15deg, #eeeeee 30%, #fff 30.1%);
+    }
+
+    .featured .featured-slider .box .image img {
+        height: 20rem;
+        /* 25rem */
+    }
+
+    .featured .featured-slider .box:hover .image {
+        transform: translateY(6rem);
+        cursor: pointer;
+    }
+
+    .featured .featured-slider .box .icons {
+        padding-bottom: var(--border-hover);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #ffff;
+        z-index: 1;
+        transform: translateY(-100%);
+        border: var(--border);
+    }
+
+    .featured .featured-slider .box:hover .icons {
+        transform: translateY(0);
+    }
+
+    .featured .featured-slider .box .icons a {
+        color: var(--black);
+        font-size: 2.2rem;
+        padding: 1.3rem 1.5rem;
+    }
+
+    .featured .featured-slider .box .icons a:hover {
+        background: var(--orange);
+        color: #fff;
+    }
+
+    .featured .featured-slider .box .content {
+        background: #eee;
+        padding: 1.5rem;
+    }
+
+    .featured .featured-slider .box .content h3 {
+        font-size: 2rem;
+        color: var(--black);
+    }
+
+    .featured .featured-slider .box .content .price {
+        font-size: 2.2rem;
+        color: var(--black);
+        padding-top: 1rem;
+    }
+
+    .featured .featured-slider .box .content .price span {
+        font-size: 1.5rem;
+        color: var(--light-color);
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+    <section class="featured" id="featured">
+
+        <div class="heading"><span>Popular Items</span></div>
+
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/000.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>Popular Dishes</h3>
+                        <div class="price">1000 <span>2000</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="images/ama6.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="./image/book-10.png" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="" class="fas fa-search"></a>
+                        <a href="" class="fas fa-heart"></a>
+                        <a href="" class="fas fa-eye"></a>
+                    </div>
+
+                    <div class="image">
+                        <img src="./image/book-1.png" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>featured book</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <a href="" class="btn">add to cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var swiper = new Swiper(".featured-slider", {
+                spaceBetween: 10,
+                loop: true,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 9500,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    450: {
+                        slidesPerView: 2,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                    },
+                },
+            });
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" defer></script>
+<script>
+    initializeSwiper();
+</script>
+
+</body>
+
+</html>

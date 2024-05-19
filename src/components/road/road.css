@@ -1,0 +1,11 @@
+.road {
+    background-color: hsl(0 0% 0%);
+    /* background-image: url(../../assets/road-1.png); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    width: 100%;
+    height: 100vh;
+    /* filter: grayscale(1); */
+    /* box-shadow: inset 0 0 300rem hsl(0 0% 0%); */
+}
